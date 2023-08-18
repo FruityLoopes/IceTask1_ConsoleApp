@@ -1,11 +1,19 @@
-﻿namespace IceTask1_ConsoleApp
+﻿using System.Xml.Linq;
+
+namespace IceTask1_ConsoleApp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            LinkedList li = new LinkedList();
+            Node node = new Node();
             AddStory();
             PrintAll(AddStory().head);
+
+            li.head = node.mergeSort(AddStory().head);
+            Console.WriteLine("Sorted List");
+            printSortedList(li.head);
         }
 
         static LinkedList AddStory()
@@ -90,6 +98,15 @@
             }
 
             return last;
+        }
+
+        public static void printSortedList(Node Head)
+        {
+            while (Head != null)
+            {
+                Console.WriteLine(Head.id + ":" + Head.text);
+                Head = Head.next;
+            }
         }
     }
 
